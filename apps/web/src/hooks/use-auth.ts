@@ -44,7 +44,7 @@ export function useAuth(): UseAuthReturn {
   };
 
   return {
-    user: (me.data as AuthUser) ?? null,
+    user: me.data ?? null,
     isLoading: me.isLoading,
     isAuthenticated: !!me.data,
     logout,

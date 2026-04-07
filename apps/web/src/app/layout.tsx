@@ -1,3 +1,4 @@
+import { NavBar } from "@/components/nav-bar";
 import { TRPCProvider } from "@/trpc/provider";
 import type { Metadata } from "next";
 import "./globals.css";
@@ -11,7 +12,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <TRPCProvider>{children}</TRPCProvider>
+        <TRPCProvider>
+          <NavBar />
+          <main>{children}</main>
+        </TRPCProvider>
       </body>
     </html>
   );

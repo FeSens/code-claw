@@ -102,17 +102,41 @@ When two implementations achieve the same test results:
 
 Use structured workflows that alternate deterministic steps (no LLM) with agent steps:
 
-- **DETERMINISTIC**: lint, format, typecheck, test runs, git operations
+- **DETERMINISTIC**: lint, format, typecheck, test runs, git operations, screenshots
 - **AGENT**: implementation, debugging, test writing, planning
 
-Key commands follow the blueprint pattern: `/implement`, `/experiment`, `/test-e2e`.
+### The Commands
+
+- `/ralph` — **The primary loop.** PRD with acceptance criteria → story-by-story TDD → all gates → deslop. Does NOT stop until every story passes. Use this for features.
+- `/implement` — Single-pass blueprint. Good for small, well-defined tasks.
+- `/experiment` — Iterative hypothesis loop. Good for improvements without clear specs.
+- `/dream-bigger` — Vision and roadmap. Run when there's nothing left to build.
+
 Deterministic steps ALWAYS run — never skip them, never approximate them.
 
 ### 2-Round Cap
 
-When fixing test/type/lint failures, attempt a fix at most 2 times.
-After 2 failed attempts: stop, summarize what you tried, and ask the human.
-Endless loops burn tokens and rarely converge.
+When fixing test/type/lint failures, attempt a fix at most 2 times per approach.
+If 2 attempts fail: discard the approach (`git reset`), try a different one.
+If 3 different approaches all fail on the same story: STOP and ask the human.
+
+### Commit Trailers
+
+Every feature commit MUST include trailers for decision context:
+```
+feat(api): add user authentication
+
+Constraint: No external auth providers — must be self-contained
+Rejected: JWT in localStorage | XSS risk, switched to httpOnly cookies
+Confidence: high
+```
+
+### Deslop
+
+After completing a feature, review all changes for AI slop:
+- Delete dead code, unused imports, redundant abstractions
+- Simplify anything over-engineered
+- Run `pnpm check` after cleanup to verify nothing broke
 
 ## Experiment Tracking
 

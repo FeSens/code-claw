@@ -4,8 +4,134 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg: #0a0a0a;
+  --fg: #e0e0e0;
+  --accent: #00ff88;
+  --muted: #666;
+  --code-bg: #1a1a2e;
+  --border: #222;
+  --font-mono: "SF Mono", "Fira Code", "Cascadia Code", "JetBrains Mono", monospace;
+}
+
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-mono);
+  background: var(--bg);
+  color: var(--fg);
   -webkit-font-smoothing: antialiased;
+  line-height: 1.7;
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+section {
+  margin-bottom: 3.5rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 1.25rem;
+  color: var(--accent);
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+p {
+  margin: 0 0 1rem;
+  color: var(--fg);
+}
+
+.tagline {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 3rem;
+}
+
+.stack-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.stack-item {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+
+.command-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.command-list li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+.command-list li:last-child {
+  border-bottom: none;
+}
+
+.command-name {
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+  min-width: 10rem;
+}
+
+.command-desc {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.loop-diagram {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  white-space: pre;
+  color: var(--fg);
+}
+
+.loop-diagram .det {
+  color: var(--accent);
+}
+
+.loop-diagram .agent {
+  color: #ff6b9d;
+}
+
+.loop-diagram .decision {
+  color: #ffd700;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
 }

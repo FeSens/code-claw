@@ -6,3 +6,4 @@ timestamp	commit	status	typecheck	tests	lint	description
 2026-04-07T15:48:57-03:00	cf9e95e	kept	pass	pass	pass	auth: sessions table, passwordHash column, auth validators
 2026-04-07T15:50:40-03:00	7c85de9	kept	pass	pass	pass	auth: AuthService with register/login/validate/logout, 8 tests
 2026-04-07T15:51:56-03:00	e4c7be7	kept	pass	pass	pass	auth: tRPC router with register/login/me/logout, 4 tests
+2026-04-07T16:03:19-03:00	471eca2	kept	pass	pass	pass	auth: login + register pages, 8 tests, dark terminal styling

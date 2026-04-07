@@ -13,7 +13,10 @@ test-results/
 !.env.example
 
 *.tsbuildinfo
-*.log
+
+# Logs (keep the directory, ignore the files)
+logs/*.log
+!logs/.gitkeep
 .DS_Store
 
 # Keep experiments log tracked

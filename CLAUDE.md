@@ -148,6 +148,20 @@ timestamp	commit	status	typecheck	tests	lint	description
 - Status: `kept`, `discarded`, `crashed`
 - This is the "lab notebook" — never delete entries
 
+### Raw Failure Logs (Meta-Harness insight)
+
+When a gate fails, save the FULL output to `logs/<timestamp>-<gate>.log` before attempting a fix.
+Summaries lose diagnostic detail. Raw logs enable counterfactual diagnosis — tracing a failure
+back to the specific decision that caused it.
+
+## State Preservation
+
+NEVER destroy working state during cleanup or verification:
+- Leave dev servers running after tests
+- Don't delete generated files during deslop
+- Don't reset database state unless explicitly asked
+- If a command modifies files, ensure the originals are recoverable via git
+
 ## Worktree Agents
 
 - Subagents dispatched with `isolation: "worktree"` get a fresh copy of the repo.

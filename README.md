@@ -1,4 +1,4 @@
-# never-code
+# code-claw
 
 The gold standard for agentic fullstack engineering.
 
@@ -22,7 +22,7 @@ A TypeScript fullstack monorepo template with an autonomous Claude Code harness.
 
 ```bash
 # Clone the template
-gh repo create my-app --template FeSens/never-code --clone
+gh repo create my-app --template FeSens/code-claw --clone
 cd my-app
 
 # Install
@@ -80,7 +80,7 @@ Claude Code slash commands that enforce structured workflows:
 ## Project Structure
 
 ```
-never-code/
+code-claw/
 ├── apps/
 │   ├── web/          Next.js frontend
 │   └── api/          Hono + tRPC API

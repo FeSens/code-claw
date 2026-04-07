@@ -1,5 +1,5 @@
 {
-  "name": "@never-code/vitest-config",
+  "name": "@code-claw/vitest-config",
   "private": true,
   "version": "0.0.0",
   "type": "module",

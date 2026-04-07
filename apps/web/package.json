@@ -1,5 +1,5 @@
 {
-  "name": "@never-code/web",
+  "name": "@code-claw/web",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -16,8 +16,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@never-code/api": "workspace:*",
-    "@never-code/shared": "workspace:*",
+    "@code-claw/api": "workspace:*",
+    "@code-claw/shared": "workspace:*",
     "@trpc/client": "^11.0.0",
     "@trpc/react-query": "^11.0.0",
     "@tanstack/react-query": "^5.64.0",

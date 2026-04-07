@@ -1,4 +1,4 @@
-import { type Database, createDb } from "@never-code/db";
+import { type Database, createDb } from "@code-claw/db";
 
 let db: Database | undefined;
 

@@ -15,3 +15,6 @@ test-results/
 *.tsbuildinfo
 *.log
 .DS_Store
+
+# Keep experiments log tracked
+!experiments.tsv

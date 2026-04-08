@@ -44,8 +44,8 @@ LOOP (per story):
 │   ├─ pnpm build — catches bundler-specific errors (webpack, etc.)
 │   ├─ IF API changes: pnpm test:integration
 │   ├─ IF UI changes: pnpm test:e2e (specific file)
-│   ├─ IF UI changes: screenshot → Read → visual inspect
-│   └─ IF UI changes: browser smoke test — open each affected page, verify no runtime errors
+│   └─ IF UI changes: dispatch Sonnet subagent with /soak --quick <affected-routes>
+│       Read soak-report.json. If any route fails, fix before committing.
 │
 ├─ 3d. Fix or Discard [AGENT]
 │   IF any gate fails:

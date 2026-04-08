@@ -134,7 +134,7 @@ function handleImplementing(state) {
 
   // No features left — transition to QA
   state.phase = "qa";
-  state.qa = { build: null, screenshots: null, e2e: null, review: null, deslop: null };
+  state.qa = { build: null, soak: null, e2e: null, review: null, deslop: null };
   writeState(state);
   blockStop(
     `All features for cycle ${state.cycle} are complete! Transitioning to QA audit.\n\nStep 1 of 4: SCREENSHOTS\n- Discover all routes in apps/web/src/app/ (look for page.tsx files).\n- Screenshot each route using /screenshot <path>.\n- Visually inspect each screenshot for broken layouts, missing content, styling issues.\n- Fix any issues found.\n- When all screenshots look good, update loop-state.json: set qa.screenshots to "pass".`,
@@ -143,7 +143,7 @@ function handleImplementing(state) {
 
 function handleQa(state) {
   const qa = state.qa;
-  const steps = ["build", "screenshots", "e2e", "review", "deslop"];
+  const steps = ["build", "soak", "e2e", "review", "deslop"];
   const instructions = {
     build:
       "QA Step 1/5: BUILD VERIFICATION\n" +
@@ -151,13 +151,13 @@ function handleQa(state) {
       "- This catches bundler-specific errors (webpack resolution, missing modules) that typecheck misses.\n" +
       "- If the build fails, fix the issue and re-run.\n" +
       `- When it passes, update loop-state.json: set qa.build to "pass".`,
-    screenshots:
-      "QA Step 2/5: SCREENSHOTS\n" +
-      "- Discover all routes in apps/web/src/app/ (look for page.tsx files).\n" +
-      "- Screenshot each route using /screenshot <path>.\n" +
-      "- Visually inspect for broken layouts, missing content, styling issues.\n" +
-      "- Fix any issues found.\n" +
-      `- When done, update loop-state.json: set qa.screenshots to "pass".`,
+    soak:
+      "QA Step 2/5: BROWSER SOAK TEST\n" +
+      "- Dispatch a Sonnet subagent: Agent(model: 'sonnet', prompt: '/soak --full')\n" +
+      "- Sonnet navigates every route, clicks interactive elements, checks console errors, takes screenshots.\n" +
+      "- Read soak-report.json when the subagent finishes.\n" +
+      "- If any route fails: fix the issues, then re-dispatch the soak.\n" +
+      `- When all routes pass, update loop-state.json: set qa.soak to "pass".`,
     e2e:
       "QA Step 3/5: E2E TESTS\n" +
       "- Run: cd apps/web && PLAYWRIGHT_HTML_OPEN=never npx playwright test --reporter=line\n" +

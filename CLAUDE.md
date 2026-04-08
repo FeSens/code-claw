@@ -177,5 +177,5 @@ NEVER destroy working state during cleanup or verification:
 4. `pnpm build` — catches bundler-specific errors (webpack resolution, missing modules)
 5. If API changes: `pnpm test:integration`
 6. If UI changes: relevant E2E tests (`/test-e2e`)
-7. If UI changes: browser smoke test — open affected pages, verify no runtime errors
+7. If UI changes: dispatch Sonnet subagent with `/soak --quick <affected-routes>`, read `soak-report.json`
 8. Log results to `experiments.tsv`

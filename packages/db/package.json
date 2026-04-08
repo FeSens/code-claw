@@ -15,11 +15,11 @@
   },
   "scripts": {
     "generate": "drizzle-kit generate",
-    "migrate": "drizzle-kit migrate",
+    "migrate": "set -a && . ../../.env && drizzle-kit migrate",
     "push": "drizzle-kit push",
     "studio": "drizzle-kit studio",
-    "seed": "tsx src/seed.ts",
-    "reset": "tsx src/reset.ts",
+    "seed": "tsx --env-file=../../.env src/seed.ts",
+    "reset": "tsx --env-file=../../.env src/reset.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

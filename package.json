@@ -24,6 +24,7 @@
     "db:studio": "pnpm --filter @never-code/db studio",
     "db:seed": "pnpm --filter @never-code/db seed",
     "db:reset": "pnpm --filter @never-code/db reset",
+    "setup": "./setup.sh",
     "clean": "turbo clean && rm -rf node_modules",
     "prepare": "lefthook install"
   },

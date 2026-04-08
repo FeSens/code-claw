@@ -68,6 +68,15 @@
             "timeout": 120
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node $CLAUDE_PROJECT_DIR/.claude/hooks/stop-loop.mjs",
+            "timeout": 30
+          }
+        ]
       }
     ]
   }

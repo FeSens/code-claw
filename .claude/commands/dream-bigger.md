@@ -66,6 +66,24 @@ For each idea, include:
 
 11. When the user picks a feature: invoke `/ralph` to build it.
 
+## Phase 6: Feed the Autonomous Loop [AGENT]
+
+If `loop-state.json` exists and its phase is `"dreaming"`:
+
+12. Read `loop-state.json`.
+13. For each feature agreed upon in Phase 5, score it:
+    - `userValue` (1-10): How much does this improve the end user experience?
+    - `differentiation` (1-10): How much does this set the project apart from alternatives?
+    - `feasibility` (1-10): How likely is the agent to implement this successfully without human help?
+    - `score = (userValue * 0.4) + (differentiation * 0.3) + (feasibility * 0.3)`
+14. Remove all features with status `"done"` or `"decomposed"` from the array.
+15. Add the new features to `loop-state.json`:
+    - `id`: `feat-<cycle+1>-<n>` (e.g., `feat-2-1`, `feat-2-2`)
+    - `status`: `"pending"`
+    - `parent`: `null`
+    - `scope`: infer from the feature description (which apps/packages it touches)
+16. Write the updated `loop-state.json`. Keep `phase` as `"dreaming"` — the stop hook will detect the new pending features and transition to `"implementing"` automatically.
+
 ## Rules
 - ALWAYS research before proposing. Don't just brainstorm in a vacuum.
 - Ground every idea in either user value or competitive advantage.
